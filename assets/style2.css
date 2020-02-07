@@ -1,0 +1,128 @@
+.contact-image {
+	min-height: 50vw;
+	background-color: #fff;
+	background-position: left center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	border-bottom: 1px solid #eee;
+}
+
+
+.bg-img-2-l, .bg-img-2-r {
+	background: url(../images/bg-img-2-1920x1231.jpg) no-repeat center;
+	background-size: cover;
+	position: relative
+}
+
+.bg-img-2-l > *, .bg-img-2-r > * {
+	z-index: 2;
+	position: relative
+}
+
+.bg-img-2-l:before, .bg-img-2-r:before {
+	content: '';
+	display: block;
+	position: absolute;
+	background: rgba(20, 16, 33, .7);
+	z-index: 1;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0
+}
+
+@media (min-width: 1200px) {
+	.bg-img-2-l:before, .bg-img-2-r:before {
+		background: rgba(20, 16, 33, .9)
+	}
+}
+
+@media (min-width: 1200px) {
+	.bg-img-2-l:before, .bg-img-2-r:before {
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 50%
+	}
+
+	.bg-img-2-r:before {
+		left: 0;
+		right: 50%;
+	}
+}
+
+.bg-gray-900 {
+	background-size: cover;
+	background-position: center;
+	background-image: url(../images/bg-img-4-1920x1068.jpg);
+}
+
+.idea-1,.idea-2,.idea-3 {
+	background-image: none;
+}
+.idea-1:after,.idea-2:after,.idea-3:after {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	content:'';
+	display: block;
+}
+.idea-1:after {
+	background: url(../images/heart.jpg) center / cover no-repeat;
+	left: 50%;
+}
+.idea-2:after {
+	background: url(../images/tusa.png) center / cover no-repeat;
+	right: 50%;
+}
+.idea-3:after {
+	background: url(../images/wedding.png) center / cover no-repeat;
+	left: 50%;
+}
+
+.contact-list {
+	color: #fff;
+}
+.contact-list li {
+	display: flex;
+	line-height: 1;
+}
+.contact-list .fas {
+	display: inline-block;
+	margin-right: 10px;
+}
+.video-play i {
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	color: #fff;
+	opacity: 0;
+	transition: .3s;
+}
+.video-play:hover i {
+	opacity: 1;
+}
+@media(max-width:600px) {
+	.video-play:hover i {
+		opacity: 1;
+	}
+}
+.list-marked>li::before {
+	content: '\f00c';
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+}
+.ui-to-top{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.brand {
+	text-transform: uppercase;
+	font-weight: 700;
+	color: #000;
+	font-size: 25px;
+}

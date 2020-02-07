@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html class="wide wow-animation desktop landscape mac-os rd-navbar-static-linked" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<style>.gm-control-active > img {
+		box-sizing: content-box;
+		display: none;
+		left: 50%;
+		pointer-events: none;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%)
+	}
+
+	.gm-control-active > img:nth-child(1) {
+		display: block
+	}
+
+	.gm-control-active:hover > img:nth-child(1), .gm-control-active:active > img:nth-child(1) {
+		display: none
+	}
+
+	.gm-control-active:hover > img:nth-child(2), .gm-control-active:active > img:nth-child(3) {
+		display: block
+	}
+	</style>
+	<style>.gm-ui-hover-effect {
+		opacity: .6
+	}
+
+	.gm-ui-hover-effect:hover {
+		opacity: 1
+	}
+	</style>
+	<style>.dismissButton {
+		background-color: #fff;
+		border: 1px solid #dadce0;
+		color: #1a73e8;
+		border-radius: 4px;
+		font-family: Roboto, sans-serif;
+		font-size: 14px;
+		height: 36px;
+		cursor: pointer;
+		padding: 0 24px
+	}
+
+	.dismissButton:hover {
+		background-color: rgba(66, 133, 244, 0.04);
+		border: 1px solid #d2e3fc
+	}
+
+	.dismissButton:focus {
+		background-color: rgba(66, 133, 244, 0.12);
+		border: 1px solid #d2e3fc;
+		outline: 0
+	}
+
+	.dismissButton:hover:focus {
+		background-color: rgba(66, 133, 244, 0.16);
+		border: 1px solid #d2e2fd
+	}
+
+	.dismissButton:active {
+		background-color: rgba(66, 133, 244, 0.16);
+		border: 1px solid #d2e2fd;
+		box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15)
+	}
+
+	.dismissButton:disabled {
+		background-color: #fff;
+		border: 1px solid #f1f3f4;
+		color: #3c4043
+	}
+	</style>
+	<title>Home</title>
+
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="icon" href="https://livedemo00.template-help.com/wt_prod-25843/images/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="assets/css.css">
+	<link rel="stylesheet" href="assets/bootstrap.css">
+
+	<link rel="stylesheet" href="assets/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+	<link rel="stylesheet" href="assets/style2.css">
+	<style>.ie-panel {
+		display: none;
+		background: #212121;
+		padding: 10px 0;
+		box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);
+		clear: both;
+		text-align: center;
+		position: relative;
+		z-index: 1;
+	}
+
+	html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {
+		display: block;
+	}</style>
+	<link rel="stylesheet"
+	      href="data:text/css;charset=utf-8;base64,Y2xvdWRmbGFyZS1hcHBbYXBwLWlkPSJhLWJldHRlci1icm93c2VyIl0gewogIGRpc3BsYXk6IGJsb2NrOwogIGJhY2tncm91bmQ6ICM0NTQ4NGQ7CiAgY29sb3I6ICNmZmY7CiAgbGluZS1oZWlnaHQ6IDEuNDU7CiAgcG9zaXRpb246IGZpeGVkOwogIHotaW5kZXg6IDkwMDAwMDAwOwogIHRvcDogMDsKICBsZWZ0OiAwOwogIHJpZ2h0OiAwOwogIHBhZGRpbmc6IC41ZW0gMWVtOwogIHRleHQtYWxpZ246IGNlbnRlcjsKICAtd2Via2l0LXVzZXItc2VsZWN0OiBub25lOwogICAgIC1tb3otdXNlci1zZWxlY3Q6IG5vbmU7CiAgICAgIC1tcy11c2VyLXNlbGVjdDogbm9uZTsKICAgICAgICAgIHVzZXItc2VsZWN0OiBub25lOwp9CgpjbG91ZGZsYXJlLWFwcFthcHAtaWQ9ImEtYmV0dGVyLWJyb3dzZXIiXVtkYXRhLXZpc2liaWxpdHk9ImhpZGRlbiJdIHsKICBkaXNwbGF5OiBub25lOwp9CgpjbG91ZGZsYXJlLWFwcFthcHAtaWQ9ImEtYmV0dGVyLWJyb3dzZXIiXSBjbG91ZGZsYXJlLWFwcC1tZXNzYWdlIHsKICBkaXNwbGF5OiBibG9jazsKfQoKY2xvdWRmbGFyZS1hcHBbYXBwLWlkPSJhLWJldHRlci1icm93c2VyIl0gYSB7CiAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7CiAgY29sb3I6ICNlYmViZjQ7Cn0KCmNsb3VkZmxhcmUtYXBwW2FwcC1pZD0iYS1iZXR0ZXItYnJvd3NlciJdIGE6aG92ZXIsCmNsb3VkZmxhcmUtYXBwW2FwcC1pZD0iYS1iZXR0ZXItYnJvd3NlciJdIGE6YWN0aXZlIHsKICBjb2xvcjogI2RiZGJlYjsKfQoKY2xvdWRmbGFyZS1hcHBbYXBwLWlkPSJhLWJldHRlci1icm93c2VyIl0gY2xvdWRmbGFyZS1hcHAtY2xvc2UgewogIGRpc3BsYXk6IGJsb2NrOwogIGN1cnNvcjogcG9pbnRlcjsKICBmb250LXNpemU6IDEuNWVtOwogIHBvc2l0aW9uOiBhYnNvbHV0ZTsKICByaWdodDogLjRlbTsKICB0b3A6IC4zNWVtOwogIGhlaWdodDogMWVtOwogIHdpZHRoOiAxZW07CiAgbGluZS1oZWlnaHQ6IDE7Cn0KCmNsb3VkZmxhcmUtYXBwW2FwcC1pZD0iYS1iZXR0ZXItYnJvd3NlciJdIGNsb3VkZmxhcmUtYXBwLWNsb3NlOmFjdGl2ZSB7CiAgLXdlYmtpdC10cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTsKICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxcHgpOwp9CgpjbG91ZGZsYXJlLWFwcFthcHAtaWQ9ImEtYmV0dGVyLWJyb3dzZXIiXSBjbG91ZGZsYXJlLWFwcC1jbG9zZTpob3ZlciB7CiAgb3BhY2l0eTogLjllbTsKICBjb2xvcjogI2ZmZjsKfQo=">
+	<style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+	.en-markup-crop-options {
+		top: 18px !important;
+		left: 50% !important;
+		margin-left: -100px !important;
+		width: 200px !important;
+		border: 2px rgba(255, 255, 255, .38) solid !important;
+		border-radius: 4px !important;
+	}
+
+	.en-markup-crop-options div div:first-of-type {
+		margin-left: 0px !important;
+	}
+	</style>
+</head>
+<body class="">
+<div class="ie-panel"><a href="https://windows.microsoft.com/en-US/internet-explorer/"><img
+		src="assets/warning_bar_0000_us.jpg" height="42" width="820"
+		alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a>
+</div>
+<div class="preloader loaded">
+	<div class="preloader-body">
+		<div class="cssload-container">
+			<div class="cssload-speeding-wheel"></div>
+		</div>
+		<p>Загрузка...</p>
+	</div>
+</div>
+<div class="page animated" style="animation-duration: 500ms;">
+	<header class="section page-header">
+		<!--RD Navbar-->
+		<div class="rd-navbar-wrap" style="height: 89px;">
+			<nav class="rd-navbar rd-navbar-classic rd-navbar-original rd-navbar-static rd-navbar--is-stuck"
+			     data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed"
+			     data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-fixed"
+			     data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static"
+			     data-xl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px"
+			     data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true"
+			     data-xxl-stick-up="true">
+				<div class="rd-navbar-main-outer">
+					<div class="rd-navbar-main">
+						<!--RD Navbar Panel-->
+						<div class="rd-navbar-panel">
+							<!--RD Navbar Toggle-->
+							<button class="rd-navbar-toggle toggle-original"
+							        data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+							<!--RD Navbar Brand-->
+							<div class="rd-navbar-brand">
+								<!--Brand--><a class="brand" href="/">Signeon.ru</a>
+							</div>
+						</div>
+						<div class="rd-navbar-main-element">
+							<div class="rd-navbar-nav-wrap toggle-original-elements">
+								<ul class="rd-navbar-nav">
+									<li class="rd-nav-item"><a class="rd-nav-link"
+									                           href="#home">Начало</a>
+									</li>
+									<li class="rd-nav-item"><a class="rd-nav-link"
+									                           href="#about">Как работает</a>
+									</li>
+									<li class="rd-nav-item"><a class="rd-nav-link"
+									                           href="#projects">Галерея</a>
+									</li>
+									<li class="rd-nav-item active"><a class="rd-nav-link"
+									                                  href="#pricing">Цены</a>
+									</li>
+								</ul>
+								<div class="button-wrap"><a class="button button-sm button-primary mt-0"
+								                            href="#contact-form"
+								                            data-custom-scroll-to="contact-form">Заказать</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
+	<section class="section section-sm" id="home">
+		<div class="container">
+			<div class="intro-box">
+				<div class="intro-box__description">
+					<div class="block-sm">
+						<h1 class="wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">Хотите
+							удивить любимого человека на <span class="text-primary">День Святого Валентина</span>?</h1>
+						<div class="wow fadeInLeft" data-wow-delay=".3s"
+						     style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+							<p>Или давно испытываете к кому-то симпатию, но не знаете, как признаться?</p>
+							<p>Рецепт идеального сюрприза для второй половинки прост:</p>
+							<p>Возьмите щепотку романтики. Добавьте к ней капельку трепетной нежности. Приправьте
+								страстью.</p>
+							<p>И наконец…</p>
+							<p>Подарите светящееся «сердце» из неона.</p>
+						</div>
+						<div class="button-group"><a class="wow fadeInUp btn button-sm button button-primary"
+						                             href="#contact-form"
+						                             data-wow-delay=".4s" data-custom-scroll-to="contact-form"
+						                             style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">Заказать</a><a class="wow fadeInUp btn button-sm button button-default-outline"
+						                  href="#about"
+						                  data-wow-delay=".5s"
+						                  style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">подробнее</a></div>
+					</div>
+				</div>
+				<div class="intro-box__media wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
+					<img src="assets/home-780x668.png" alt="" width="780" height="668">
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--ABout Us-->
+	<section class="section section-custom-1 bg-img-1 overlay-sm" id="about">
+		<div class="container">
+			<div class="row row-50 justify-content-xl-between flex-xl-row flex-column justify-content-center align-items-center">
+				<div class="col-xl-5 col-md-8 text-center text-xl-left">
+					<h2 class="wow fadeInLeft text-decor" data-wow-delay=".2s"
+					    style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">Вывеска «сердце»
+						на 14 февраля: что это и как работает?</h2>
+					<div class="wow fadeInLeft" data-wow-delay=".4s"
+					     style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+						<p>Вывеска изготовлена из гибкого неона. Это прозрачный кабель из пластика, внутри которого
+							проведены светодиоды: мини-приборы, превращающие электрический ток в световое излучение.</p>
+						<p>Светодиоды создают эффект холодного свечения. За счет него вывеску видно издалека – она
+							светится розовым и голубым цветом.</p>
+						<p>«Сердце» работает от розетки. Повесить его можно на стену или любую ровную поверхность.</p>
+					</div>
+					<a
+							class="wow fadeInLeft btn-sm btn button button-sm button-default-outline"
+							href="#advantages" data-wow-delay=".5s"
+							style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">подробнее</a>
+				</div>
+				<div class="col-xl-6">
+					<div class="row row-30 row-xl-midle">
+						<div class="col-sm-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+							<!--Counter-->
+							<div class="box-counter counters-reverse">
+								<div class="box-counter-main">
+									<div class="counter animated-first">2</div>
+									<div class="counter-postfix"> дня</div>
+								</div>
+								<p class="box-counter-title">Срок доставки</p>
+							</div>
+						</div>
+						<div class="col-sm-4 wow fadeInUp" data-wow-delay=".2s"
+						     style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+							<!--Counter-->
+							<div class="box-counter counters-reverse">
+								<div class="box-counter-main">
+									<div class="counter animated-first">100</div>
+									<div class="counter-postfix">+</div>
+								</div>
+								<p class="box-counter-title">Довольных клиентов</p>
+							</div>
+						</div>
+						<div class="col-sm-4 wow fadeInUp" data-wow-delay=".3s"
+						     style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+							<!--Counter-->
+							<div class="box-counter counters-reverse">
+								<div class="box-counter-main">
+									<div class="counter animated-first">50</div>
+									<div class="counter-postfix">+</div>
+								</div>
+								<p class="box-counter-title">Счастливых пар</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--Advantages-->
+	<section id="advantages" class="section section-custom-2 bg-img-2 context-dark">
+		<div class="container container-xl-custom">
+			<div class="row justify-content-between row-30 flex-xl-row flex-column">
+				<div class="col-xl-6 no-inset-xxl">
+					<div class="advantages-box-wrapper">
+						<div class="row no-gutters flex-column flex-xl-row align-items-center">
+							<div class="col-xl-6 d-flex flex-xl-column justify-content-center flex-wrap flex-sm-nowrap">
+								<div class="advantages-box advantages-box__darker-2 wow fadeInUp"
+								     style="visibility: visible; animation-name: fadeInUp;">
+									<div class="icon linearicons-chart-growth"></div>
+									<h4>Ярко</h4>
+								</div>
+								<div class="advantages-box wow fadeInUp wow fadeInLeft" data-wow-delay=".3s"
+								     style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+									<div class="icon linearicons-lock"></div>
+									<h4>Безопасно</h4>
+								</div>
+							</div>
+							<div class="col-xl-6 d-flex flex-xl-column justify-content-center flex-wrap flex-sm-nowrap">
+								<div class="advantages-box advantages-box__primary wow fadeInUp"
+								     style="visibility: visible; animation-name: fadeInUp;">
+									<div class="icon linearicons-thumbs-up"></div>
+									<h4>Экономно</h4>
+								</div>
+								<div class="advantages-box advantages-box__darker wow fadeInUp wow fadeInLeft"
+								     data-wow-delay=".3s"
+								     style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInLeft;">
+									<div class="icon linearicons-link2"></div>
+									<h4>Красиво</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-5 d-xl-flex flex-xl-column justify-content-xl-center align-items-start text-center text-xl-left wow fadeInRight"
+				     data-wow-delay=".5s"
+				     style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;">
+					<h2>Чем хорош гибкий неон</h2>
+					<div class="block-sm-2">
+						<ul class="list-marked">
+							<li>Изделия из него выглядят стильно и необычно. Вашей Половинке захочется сделать с
+								вывеской селфи, а вам – присоединиться к ней. И в Инстаграме появится яркое совместное
+								фото.
+							</li>
+							<li>Его видно издалека. Как только зайдете в комнату – вывеска сразу бросится в глаза.</li>
+							<li>Потребляет мало электроэнергии: «сердце» не обязательно выключать на ночь и перед уходом
+								из дома.
+							</li>
+							<li>Не опасен для глаз, в отличие от ярких светодиодных ламп.</li>
+						</ul>
+						<p>Звучит заманчиво! Но как преподнести подарок?</p>
+						<p>Мы подскажем:</p>
+					</div>
+					<a
+							class="button-md btn button button-primary-outline"
+							href="#projects">подробнее</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!--Gallery-->
+	<section class="section section-custom-5" id="projects">
+		<div class="container-fluid inset-0 isotope-wrap">
+			<div class="row no-gutters row-sm-0 isotope" data-isotope-layout="masonry" data-column-width=".25"
+			     data-lightgallery="group" data-lg-animation="lg-slide-circular"
+			     style="position: relative; height: 855px;">
+				<div class="col-sm-6 col-md-4 col-xl-custom-1 isotope-item"
+				     style="position: absolute; left: 0px; top: 0px;"><a class="gallery-item"
+				                                                         href="https://livedemo00.template-help.com/wt_prod-25843/images/gallery-1-1200x800-original.jpg"
+				                                                         data-lightgallery="item"><img
+						src="assets/gallery-1-660x660.jpg" alt="" width="660" height="660"><span
+						class=" fas fa-search-plus"></span></a></div>
+				<div class="col-sm-6 col-md-4 col-xl-custom-2 isotope-item"
+				     style="position: absolute; left: 495px; top: 0px;"><a class="gallery-item"
+				                                                           href="https://livedemo00.template-help.com/wt_prod-25843/images/gallery-3-1200x800-original.jpg"
+				                                                           data-lightgallery="item"><img
+						src="assets/gallery-3-480x480.jpg" alt="" width="480" height="480"><span
+						class=" fas fa-search-plus"></span></a></div>
+				<div class="col-sm-6 col-md-4 col-xl-custom-3 isotope-item"
+				     style="position: absolute; left: 855px; top: 0px;"><a class="gallery-item"
+				                                                           href="https://livedemo00.template-help.com/wt_prod-25843/images/gallery-4-1200x800-original.jpg"
+				                                                           data-lightgallery="item"><img
+						src="assets/gallery-4-780x480.jpg" alt="" width="780" height="480"><span
+						class=" fas fa-search-plus"></span></a></div>
+				<div class="col-sm-6 col-md-4 isotope-item col-xl-custom-3"
+				     style="position: absolute; left: 495px; top: 360px;"><a class="gallery-item"
+				                                                             href="https://livedemo00.template-help.com/wt_prod-25843/images/gallery-5-1200x800-original.jpg"
+				                                                             data-lightgallery="item"><img
+						src="assets/gallery-5-780x660.jpg" alt="" width="780" height="660"><span
+						class=" fas fa-search-plus"></span></a></div>
+				<div class="col-sm-6 col-md-4 isotope-item col-xl-custom-1"
+				     style="position: absolute; left: 0px; top: 495px;"><a class="gallery-item"
+				                                                           href="https://livedemo00.template-help.com/wt_prod-25843/images/gallery-2-1200x800-original.jpg"
+				                                                           data-lightgallery="item"><img
+						src="assets/gallery-2-660x480.jpg" alt="" width="660" height="480"><span
+						class=" fas fa-search-plus"></span></a></div>
+				<div class="col-sm-6 col-md-4 isotope-item col-xl-custom-2"
+				     style="position: absolute; left: 1080px; top: 360px;"><a class="gallery-item"
+				                                                              href="https://livedemo00.template-help.com/wt_prod-25843/images/gallery-6-1200x800-original.jpg"
+				                                                              data-lightgallery="item"><img
+						src="assets/gallery-6-480x660.jpg" alt="" width="480" height="660"><span
+						class=" fas fa-search-plus"></span></a></div>
+			</div>
+		</div>
+	</section>
+
+
+	<!--Variants-->
+	<section class="section section-custom-3 bg-img-2-r context-dark idea-1">
+		<div class="container container-xl-custom">
+			<div class="row justify-content-between row-30 flex-xl-row flex-column">
+				<div class="col-xl-5 d-xl-flex flex-xl-column justify-content-xl-center align-items-start text-center text-xl-left wow fadeInRight"
+				     data-wow-delay=".5s"
+				     style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+					<h2>Идея 1</h2>
+					<div class="block-sm-2">
+						<p>Повесьте вывеску на стену в квартире или доме. Включите. Украсьте комнату воздушными шарами.
+							Зажгите свечи. Приготовьте вкусный ужин и скачайте романтичный фильм. Дождитесь, когда
+							Вторая Половинка придет домой и увидит сюрприз. Готово! Вы восхитительны!</p>
+					</div>
+				</div>
+				<div class="col-xl-6 no-inset-xxl"></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-custom-3 bg-img-2-l context-dark idea-2">
+		<div class="container container-xl-custom">
+			<div class="row justify-content-between row-30 flex-xl-row flex-column">
+				<div class="col-xl-6 no-inset-xxl"></div>
+				<div class="col-xl-5 d-xl-flex flex-xl-column justify-content-xl-center align-items-start text-center text-xl-left wow fadeInRight"
+				     data-wow-delay=".5s"
+				     style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;">
+					<h2>Идея 2</h2>
+					<div class="block-sm-2">
+						<p>Повесьте вывеску на стену. Включите. Пригласите в гости объект ваших воздыханий. Таинственным
+							голосом произнесите: «Я давно хотел тебе кое-что сказать… Посмотри на стену, и все поймешь».
+							Готово! Вы признались в любви! Возможно, вам откажут, ведь сердцу не прикажешь. Но мы держим
+							за вас кулочки.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-custom-3 bg-img-2-r context-dark idea-3">
+		<div class="container container-xl-custom">
+			<div class="row justify-content-between row-30 flex-xl-row flex-column">
+				<div class="col-xl-5 d-xl-flex flex-xl-column justify-content-xl-center align-items-start text-center text-xl-left wow fadeInRight"
+				     data-wow-delay=".5s"
+				     style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+					<h2>Идея 3</h2>
+					<div class="block-sm-2">
+						<p>Повесьте вывеску на стену. Включите. Приготовьте ужин. Пригласите любимого человека. Встаньте
+							на одно колено, достаньте кольцо (не забудьте заранее его приобрести), произнесите что-то
+							вроде: «Ты – именно та, кого я всегда искал, и я хочу связать с тобой жизнь!». Главное, не
+							врите и будьте искренны. Готово! Вы сделали предложение руки и сердца, которое вполне может
+							побороться за приз в номинации «Самое трогательное предложение 2020 года».</p>
+					</div>
+				</div>
+				<div class="col-xl-6 no-inset-xxl"></div>
+			</div>
+		</div>
+	</section>
+
+
+
+	<!--Pricing-->
+	<section class="section section-custom-3 bg-img-3" id="pricing">
+		<div class="container">
+			<h2 class="text-decor text-center text-xl-left">Цены</h2>
+			<div class="row row-30 align-items-center">
+				<div class="col-xl-4 wow fadeInUp" data-wow-delay=".4s"
+				     style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+					<div class="pricing-box text-center">
+						<h2>На стену</h2>
+						<p>If your startup requires top-level support, this plan is for you!</p>
+						<ul class="pricing-box__list">
+							<li>Strategic Planning</li>
+							<li>SMM Services</li>
+							<li>Reviews &amp; Audits</li>
+							<li>24/7 Customer Support</li>
+							<li>Tax Planning</li>
+						</ul>
+						<div class="pricing-box__price">1490<i class="fas fa-ruble-sign" style="font-size: .5em;"></i></div>
+						<a class="btn-sm btn button button-default-outline"
+						   href="#contact-form"
+						   data-custom-scroll-to="contact-form">Заказать</a>
+					</div>
+				</div>
+				<div class="col-xl-4 wow fadeInUp" data-wow-delay=".3s"
+				     style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+					<div class="pricing-box text-center">
+						<h2>На подставке</h2>
+						<p>This plan is highly recommended for most entrepreneurs and startups.</p>
+						<ul class="pricing-box__list">
+							<li>Strategy &amp; Research</li>
+							<li>Finance Management</li>
+							<li>Strategic Planning</li>
+							<li>Risk Management</li>
+							<li>Mentoring</li>
+							<li>Online &amp; Offline Support</li>
+						</ul>
+						<div class="pricing-box__price">1990<i class="fas fa-ruble-sign" style="font-size: .5em;"></i></div>
+						<a class="btn-sm btn button button-primary"
+						   href="#contact-form"
+						   data-custom-scroll-to="contact-form">Заказать</a>
+					</div>
+				</div>
+				<div class="col-xl-4 wow fadeInUp" data-wow-delay=".4s"
+				     style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+					<div class="pricing-box text-center">
+						<h2>На подставке+</h2>
+						<p>Это лучший выбор, для тех кто хочет впечатлить своего любимого человека!</p>
+						<ul class="pricing-box__list">
+							<li>Сердце на подставке</li>
+							<li>Открытка</li>
+							<li>Цветы</li>
+						</ul>
+						<div class="pricing-box__price">2490<i class="fas fa-ruble-sign" style="font-size: .5em;"></i></div>
+						<a class="btn-sm btn button button-default-outline"
+						   href="#contact-form"
+						   data-custom-scroll-to="contact-form">Заказать</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+	<!--Call to Action-->
+	<section class="section bg-grad-1 section-sm">
+		<div class="container">
+			<div class="row row-30">
+				<div class="col-lg-9 wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+					<div class="cta-box-classic"><span class="icon linearicons-briefcase">
+						<i class="fas fa-gift"></i>
+					</span>
+						<div class="heading-1">Сделайте оригинальный подарок</div>
+						<span class="subtitle">Закажите неоновое сердце</span>
+					</div>
+				</div>
+				<div class="col-lg-3 text-xl-right d-flex align-items-center justify-content-center justify-content-lg-end wow fadeInRight"
+				     style="visibility: visible; animation-name: fadeInRight;"><a
+						class="btn-md btn button button-white-transparent"
+						href="#"
+						data-custom-scroll-to="contact-form">Заказать</a></div>
+			</div>
+		</div>
+	</section>
+
+
+	<!--Contact Form-->
+	<section class="section bg-gray-100 position-relative section-custom-6" id="contact-form">
+		<div class="container">
+			<div class="row justify-content-xl-between justify-content-center">
+				<div class="col-lg-5 inset-custom-1 col-sm-8 wow fadeInLeft"
+				     style="visibility: visible; animation-name: fadeInLeft;">
+					<h2 class="text-center text-lg-left text-decor">На связи</h2><span
+						class="text-center text-lg-left text-dark d-inline-block offset-top-20">Чтобы оформить заказ заполните форму.</span>
+					<form class="rd-form rd-mailform contact-form" data-form-output="form-output-global"
+					      data-form-type="contact" method="post"
+					      action="https://livedemo00.template-help.com/wt_prod-25843/bat/rd-mailform.php"
+					      novalidate="novalidate">
+						<div class="row row-20">
+							<div class="col-md-12">
+								<div class="form-wrap">
+									<input class="form-input form-control-has-validation" id="contact-name" type="text"
+									       name="name" data-constraints="@Required"><span
+										class="form-validation"></span>
+									<label class="form-label rd-input-label" for="contact-name">Имя</label>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-wrap">
+									<input class="form-input form-control-has-validation" id="contact-email"
+									       type="email" name="email" data-constraints="@Email @Required"><span
+										class="form-validation"></span>
+									<label class="form-label rd-input-label" for="contact-email">E-mail</label>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-wrap">
+									<label class="form-label rd-input-label" for="contact-message">Адрес доставки</label>
+									<textarea class="form-input form-control-has-validation form-control-last-child"
+									          id="contact-message" name="message"
+									          data-constraints="@Required"></textarea><span
+										class="form-validation"></span>
+								</div>
+							</div>
+							<div class="col-12 text-center text-lg-left">
+								<button class="btn-sm btn button button-primary" type="submit">Отправить</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="col-lg-6 col-xl-5 position-static">
+					<div class="video-box-creative">
+						<a href="https://www.youtube.com/watch?v=cPQEbraosVE" class="video-play"
+					                                   data-lightgallery="item" savefrom_lm_index="1"
+					                                   savefrom_lm="1"><i class="fas fa-3x fa-play"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!--Main reason-->
+	<section class="section section-custom-7 bg-gray-900">
+		<div class="container">
+			<h2 class="text-center text-white wow fadeInRight"
+			    style="visibility: visible; animation-name: fadeInRight;">Главная причина купить неоновую вывеску «сердце»</h2>
+			<div class="row">
+				<div class="col-12" data-wow-delay=".2s">
+					<p>Без неё романтический вечер многое потеряет. Да что там! На ней держится вся атмосфера.</p>
+					<p>Ужин, кино, свечи, признания без вывески – это уже что-то не то. Как будто в пространстве пусто и
+						чего-то не хватает... Чего-то яркого, креативного и в то же время лампового.</p>
+					<p>Согласны?</p>
+					<p>Сделайте 14 февраля одним из самых ярких дней в году для вас и того, кем дорожите:</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!--Map-->
+	<section class="section position-relative">
+		<div class="contact-box">
+			<div class="container">
+				<div class="row justify-content-end">
+					<div class="col-lg-5 d-flex justify-content-center d-flex flex-column align-items-center column-overlay wow fadeInRight"
+					     style="visibility: visible; animation-name: fadeInRight;">
+						<h2 class="text-white">Контакты</h2>
+						<ul class="contact-list">
+							<li><span class=" fas fa-phone"></span><a href="tel:">+7 903 123 45 67</a></li>
+							<li><span class=" fas fa-envelope"></span><a href="mailto:#">mail@yandex.ru</a></li>
+							<li><span class=" fas fa-map-marker"></span><a
+									href="#"><span class="d-block">9966 Pacific Dr.</span><span
+									class="d-block">New York, NY 10027</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="contact-image" style="background-image: url(images/contact.jpg);"></div>
+	</section>
+	<footer class="section footer-classic context-dark">
+		<div class="container">
+			<div class="footer-inner">
+				<!--Brand--><a class="brand" href="/"><img
+					class="brand-logo-dark" src="assets/logo-default-140x47.png" alt="" width="70"
+					height="23">Signeon.ru</a>
+				<p class="rights"><span><!-- Site name --></span><span>&nbsp;</span><span>©&nbsp; </span><span class="copyright-year">2020</span><span>&nbsp;</span><span>Все права защищены.</span>
+				</p>
+				<ul class="social-list">
+					<li><a class="fab fa-twitter" href="#"></a>
+					</li>
+					<li><a class=" fab fa-facebook" href="#"></a>
+					</li>
+					<li><a class=" fas fa-envelope" href="#"></a>
+					</li>
+					<li><a class=" fab fa-instagram" href="#"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+</div>
+<div class="snackbars" id="form-output-global"></div>
+<script src="assets/core.min.js"></script>
+<script src="assets/script.js"></script>
+
+
+</body>
+</html>
